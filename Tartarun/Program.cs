@@ -1,4 +1,13 @@
-﻿using System.Drawing;
+﻿//Tartarun
+//jogo de corrida de tartarugas com multithreading
+//Grupo:
+//Gabriel Alexander Pinheiro Bravo
+//Felipe Vieira Canalle
+//William Luz
+//Victor Luiz
+
+
+using System.Drawing;
 using System.Threading;
 
 class Turtle
@@ -8,7 +17,7 @@ class Turtle
     private float width;
     private Color color;
     private int speed;
-    public float xPosition;
+    public int xPosition;
     public bool finished;
 
     public Turtle(string name, float weight, float width, Color color)
@@ -18,24 +27,23 @@ class Turtle
         this.width = width;
         this.color = color;
         this.speed = new Random().Next(1, 6);
-        this.xPosition = 0;
     }
 
     public void Present()
     {
-        Console.WriteLine($"Name: {name}");
-        Console.WriteLine($"Weight: {weight} kg");
-        Console.WriteLine($"Width: {width} cm");
-        Console.WriteLine($"Color: {color}");
-        Console.WriteLine($"Speed: {speed}");
+        Console.WriteLine($"Nome: {name}");
+        Console.WriteLine($"Peso: {weight}kg");
+        Console.WriteLine($"Largura: {width}cm");
+        Console.WriteLine($"Cor: {color.Name}");
+        Console.WriteLine($"Velocidade: {speed}");
     }
 
     public void Move(float trackLength)
     {
-        xPosition += speed;
-        if (xPosition >= 100)
+        this.xPosition += this.speed;
+        if (this.xPosition >= trackLength)
         {
-            finished = true;
+            this.finished = true;
         }
     }
 }
@@ -45,23 +53,30 @@ class Program
     static void Race(List<Turtle> turtles, int trackLength)
     {
         // countdown to start
+        bool raceFinished = false;
+
+        foreach (Turtle turtle in turtles)
+        {
+            turtle.xPosition = 0;
+            turtle.finished = false;
+        }
 
         Console.WriteLine("1. Rodas anexadas!");
         Thread.Sleep(1000);
-        Console.WriteLine("2. Nitro ativado!");
-        Thread.Sleep(1000);
-        Console.WriteLine("3. Largada!");
 
-        bool raceFinished = false;
-        
         Thread[] threads = new Thread[turtles.Count];
+        Console.WriteLine("2. Threads criadas!");
+        Thread.Sleep(1000);
+
+        Console.WriteLine("3. Corrida iniciada!");
+        Thread.Sleep(1000);
+
         for (int i = 0; i < turtles.Count; i++)
         {
+            int localI = i;
             threads[i] = new Thread(() =>
             {
-                Turtle turtle = turtles[i];
-                trackLength = 100;
-
+                Turtle turtle = turtles[localI];
                 while (!turtle.finished)
                 {
                     turtle.Move(trackLength);
@@ -71,44 +86,88 @@ class Program
             threads[i].Start();
         }
 
+        Turtle winnerTurtle = null;
+
         while (!raceFinished)
         {
-            raceFinished = true;
             foreach (Turtle turtle in turtles)
             {
-                if (!turtle.finished)
+                if (turtle.finished)
                 {
-                    raceFinished = false;
-                    break;
+                    raceFinished = true;
+                    winnerTurtle = turtle;
                 }
             }
+            Console.Clear();
             DrawTurtles(turtles, trackLength);
             Thread.Sleep(100);
         }
+
+        Console.WriteLine("");
+
+        Console.WriteLine($"A tartaruga {winnerTurtle.name} venceu a corrida!");
+        Console.Write("Continuando em 3...");
+        Thread.Sleep(1000);
+        Console.Write(" 2...");
+        Thread.Sleep(1000);
+        Console.Write(" 1...");
+        Thread.Sleep(1000);
+
+        Console.Clear();
+        PresetWinner(winnerTurtle);
+        Console.ReadKey();
+    }
+
+    static void PresetWinner(Turtle winnerTurtle)
+    {
+        Console.WriteLine("-=- | Vencedor | -=-");
+        Console.WriteLine("");
+        Console.WriteLine($"A tartaruga {winnerTurtle.name} venceu a corrida!");
+        Console.WriteLine("");
+        Console.WriteLine($"Informações da tartaruga {winnerTurtle.name}:");
+        Console.WriteLine("");
+        winnerTurtle.Present();
+        Console.WriteLine("");
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+        Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-");
+        Console.ReadKey();
     }
 
     static void DrawTurtles(List<Turtle> turtles, int trackLength)
     {
-        Console.Clear();
+        //Console.Clear();
+        Console.WriteLine("-=- | Corrida | -=-");
+        Console.WriteLine("");
         for (int i = 0; i < turtles.Count; i++)
         {
-            for (int b = 0; i < turtles[i].xPosition; i++)
+            Console.Write("|");
+            for (int b = 0; b < trackLength; b++)
             {
-                Console.Write(" ");
+                if (b == (int)turtles[i].xPosition)
+                {
+                    Console.Write(turtles[i].name[0]);
+                }
+                else
+                {
+                    Console.Write("-");
+                }
             }
-            Console.WriteLine("T");
-            Console.WriteLine("");
+            Console.WriteLine("|");
         }
     }
     static void PresentTurtles(List<Turtle> turtles)
     {
         foreach (Turtle turtle in turtles)
         {
+            Console.WriteLine("-=- | Tartarugas | -=-");
+            Console.WriteLine("");
+            Console.WriteLine("Tartaruga nº" + (turtles.IndexOf(turtle) + 1));
+            Console.WriteLine("");
             turtle.Present();
             Console.WriteLine("");
             if (turtles.IndexOf(turtle) < turtles.Count - 1)
             {
-                Console.WriteLine("Press any key to see the next turtle");
+                Console.WriteLine("Pressione qualquer tecla para ver a próxima tartaruga");
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -122,17 +181,19 @@ class Program
 
         Console.WriteLine("Tartarun é um jogo de corrida de tartarugas");
         Console.WriteLine("A ideia é utilizar o conceito de multithreading, para atualizar a posição de cada tartaruga simultaneamente");
-
+        Console.WriteLine("");
         Console.WriteLine("Desenvolvido por: Gabriel Alexander Pinheiro Bravo");
         Console.WriteLine("GitHub: http://github.com/xandeco024");
-
+        Console.WriteLine("");
         Console.WriteLine("Grupo da atividade:");
         Console.WriteLine("Gabriel Alexander Pinheiro Bravo");
         Console.WriteLine("Felipe Vieira Canalle");
         Console.WriteLine("William Luz");
         Console.WriteLine("Victor Luiz");
-
+        Console.WriteLine("");
         Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+        Console.WriteLine("");
+        Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-");
         Console.ReadKey();
     }
 
@@ -140,7 +201,7 @@ class Program
     {
         List<Turtle> turtles = new List<Turtle>();
 
-        Console.Write("Você deseja preencher as tartarugas automaticamente e aleatoriamente? (s/n)");
+        Console.WriteLine("Você deseja preencher as tartarugas automaticamente e aleatoriamente? (s/n)");
         string answer = Console.ReadLine();
         if (answer == "s")
         {
@@ -203,10 +264,21 @@ class Program
 
         Console.Clear();
 
+        Console.WriteLine("-=- | Tartarun | -=-");
+
+        Console.WriteLine("Bem-vindo ao Tartarun!");
+        Console.WriteLine("Para começar, crie as tartarugas que irão competir na corrida!");
+        Console.WriteLine("");
+
         List<Turtle> turtles = CreateTurtles();
+        Console.WriteLine("Tartarugas criadas com sucesso!");
+        Console.WriteLine("");
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+        Console.ReadKey();
 
         while(running)
         {
+            Console.Clear();
             Console.WriteLine("-=- | MENU | -=-");
             Console.WriteLine("");
             Console.WriteLine("Escolha uma opção:");

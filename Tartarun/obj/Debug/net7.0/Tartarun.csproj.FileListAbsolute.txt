@@ -13,3 +13,18 @@ C:\Users\alepb\OneDrive\Documentos\Academico\04 FATEC Jogos Digitais\Processamen
 C:\Users\alepb\OneDrive\Documentos\Academico\04 FATEC Jogos Digitais\Processamento Paralelo\Tartarun\Tartarun\obj\Debug\net7.0\Tartarun.pdb
 C:\Users\alepb\OneDrive\Documentos\Academico\04 FATEC Jogos Digitais\Processamento Paralelo\Tartarun\Tartarun\obj\Debug\net7.0\Tartarun.genruntimeconfig.cache
 C:\Users\alepb\OneDrive\Documentos\Academico\04 FATEC Jogos Digitais\Processamento Paralelo\Tartarun\Tartarun\obj\Debug\net7.0\ref\Tartarun.dll
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\bin\Debug\net7.0\Tartarun.exe
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\bin\Debug\net7.0\Tartarun.deps.json
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\bin\Debug\net7.0\Tartarun.runtimeconfig.json
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\bin\Debug\net7.0\Tartarun.dll
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\bin\Debug\net7.0\Tartarun.pdb
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.AssemblyInfoInputs.cache
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.AssemblyInfo.cs
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.csproj.CoreCompileInputs.cache
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.sourcelink.json
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.dll
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\refint\Tartarun.dll
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.pdb
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.genruntimeconfig.cache
+C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\ref\Tartarun.dll
