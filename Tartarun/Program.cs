@@ -17,6 +17,7 @@ class Turtle
     private float width;
     private Color color;
     private int speed;
+    private float IMC;
     public int xPosition;
     public bool finished;
 
@@ -27,6 +28,7 @@ class Turtle
         this.width = width;
         this.color = color;
         this.speed = new Random().Next(1, 6);
+        this.IMC = this.weight / ((this.width/100) * (this.width/100));
     }
 
     public void Present()
@@ -36,11 +38,42 @@ class Turtle
         Console.WriteLine($"Largura: {width}cm");
         Console.WriteLine($"Cor: {color.Name}");
         Console.WriteLine($"Velocidade: {speed}");
+        Console.WriteLine($"IMC: {IMC}");
     }
 
     public void Move(float trackLength)
     {
-        this.xPosition += this.speed;
+        bool move = false;
+        int chanceToMove;
+        
+        if (IMC < 50)
+        {
+            chanceToMove = 50;
+        }
+        else if (IMC < 100)
+        {
+            chanceToMove = 75;
+        }
+        else if (IMC < 125)
+        {
+            chanceToMove = 100;
+        }
+        else if (IMC < 200)
+        {
+            chanceToMove = 75;
+        }
+        else
+        {
+            chanceToMove = 50;
+        }
+
+        move = new Random().Next(0, 101) <= chanceToMove;
+
+        if (move)
+        {
+            this.xPosition += this.speed;
+        }
+
         if (this.xPosition >= trackLength)
         {
             this.finished = true;
