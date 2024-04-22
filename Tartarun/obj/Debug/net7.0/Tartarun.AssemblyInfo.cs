@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tartarun")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0157d675957c0aaa809b4ec0a8ad21227b5b6377")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tartarun")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tartarun")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

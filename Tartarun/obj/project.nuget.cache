@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9M3qLqVg4mxgwaWW8ARCsH8i+WfkcYiXkTtQZPhUtsm9i0gYenqxBmSdx2AADozmhLHaEIuLEvNmM8N1NWTcZw==",
+  "dgSpecHash": "KqeuU203BD5lEmcxj1AleRPQJhW9qG5D3DZcgy786HTHN/DfGB0TbUvA3iIzkaFMoppszg29TP53A50F2dRW8A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alunock\\Desktop\\Arquivos Temporários\\xanbriel\\tartarun\\Tartarun\\Tartarun.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Alunock\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.17\\microsoft.netcore.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\Alunock\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.17\\microsoft.windowsdesktop.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\Alunock\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.17\\microsoft.aspnetcore.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\Alunock\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.17\\microsoft.netcore.app.host.win-x64.7.0.17.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\alepb\\Desktop\\Projetos\\C#\\tartarun\\Tartarun\\Tartarun.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

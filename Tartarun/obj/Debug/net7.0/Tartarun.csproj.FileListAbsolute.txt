@@ -28,3 +28,18 @@ C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\De
 C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.pdb
 C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\Tartarun.genruntimeconfig.cache
 C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\obj\Debug\net7.0\ref\Tartarun.dll
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\bin\Debug\net7.0\Tartarun.exe
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\bin\Debug\net7.0\Tartarun.deps.json
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\bin\Debug\net7.0\Tartarun.runtimeconfig.json
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\bin\Debug\net7.0\Tartarun.dll
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\bin\Debug\net7.0\Tartarun.pdb
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\Tartarun.csproj.AssemblyReference.cache
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\Tartarun.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\Tartarun.AssemblyInfoInputs.cache
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\Tartarun.AssemblyInfo.cs
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\Tartarun.csproj.CoreCompileInputs.cache
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\Tartarun.dll
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\refint\Tartarun.dll
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\Tartarun.pdb
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\Tartarun.genruntimeconfig.cache
+C:\Users\alepb\Desktop\Projetos\C#\tartarun\tartarun\obj\Debug\net7.0\ref\Tartarun.dll
