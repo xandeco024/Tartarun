@@ -12,6 +12,92 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Threading;
 
+class Trait
+{
+    public string name;
+    public string description;
+    public bool logged;
+    public bool triggered;
+    private string triggerMessage;
+    public string TriggerMessage(Turtle turtle1, Turtle turtle2 = null)
+    {
+        string text = "";
+        if (turtle2 != null)
+        {
+            text = (triggerMessage.Replace("$", turtle1.name).Replace("#", turtle2.name));
+        }
+        else
+        {
+            text = (triggerMessage.Replace("$", turtle1.name));
+        }
+        Thread thread = new Thread(ResetTrigger);
+        return text;
+    }
+
+    void ResetTrigger()
+    {    
+        Thread.Sleep(100);
+        this.triggered = false;
+    }
+
+    public Trait(string name)
+    {
+        this.name = name;
+        switch (name)
+        {
+            case "safada":
+                description = "Gosta de jogar sujo, ocasionalmente sabota uma tartaruga adversária.";
+                triggerMessage = "SAFADA! A tartaruga $ sabotou a tartaruga #";
+                break;
+
+            case "esperta":
+                description = "Ocasionalmente utiliza skates para se aumentar a eficiencia de seu movimento.";
+                triggerMessage = "ESPERTA! A tartaruga $ utilizou um skate para se mover mais rápido!";
+                break;
+
+            case "preguiçosa":
+                description = "Ocasionalmente se auto-declara cansada. mesmo que não esteja.";
+                triggerMessage = "PREGUIÇOSA! A tartaruga $ se declarou cansada e parou de se mover!";
+                break;
+
+            case "determinada":
+                description = "Ocasionalmente se recusa a descansar, e recupera parte de sua vitalidade como mágica";
+                triggerMessage = "DETERMINADA! A tartaruga $ se recusou a descansar e recuperou parte de sua vitalidade!";
+                break;
+
+            case "distraida":
+                description = "Ocasionalmente se move na direção oposta, ela nem sabe o que está fazendo...";
+                triggerMessage = "DISTRAÍDA! A tartaruga $ chapou!";
+                break;
+        
+        }
+    }
+
+    public bool Activate()
+    {
+        switch (name)
+        {
+            case "safada":
+                return new Random().Next(0, 101) <= 10;
+
+            case "esperta":
+                return new Random().Next(0, 101) <= 10;
+
+            case "preguiçosa":
+                return new Random().Next(0, 101) <= 10;
+
+            case "determinada":
+                return new Random().Next(0, 101) <= 10;
+
+            case "distraida":
+                return new Random().Next(0, 101) <= 25;
+
+            default:
+                return false;
+        }
+    }
+}
+
 class Turtle
 {
     public string name;
@@ -28,66 +114,8 @@ class Turtle
     public bool resting;
     public float restingTime = 0;
     public float timeFinished;
-    private Trait trait;
+    public Trait turtleTrait;
     private string[] traits = { "safada", "esperta", "preguiçosa", "determinada", "distraida"};
-
-    class Trait
-    {
-        public string name;
-        public string description;
-        public bool logged;
-        public Trait(string name)
-        {
-            this.name = name;
-            switch (name)
-            {
-                case "safada":
-                    description = "Gosta de jogar sujo, ocasionalmente sabota uma tartaruga adversária.";
-                    break;
-
-                case "esperta":
-                    description = "Ocasionalmente utiliza skates para se aumentar a eficiencia de seu movimento.";
-                    break;
-
-                case "preguiçosa":
-                    description = "Ocasionalmente se auto-declara cansada. mesmo que não esteja.";
-                    break;
-
-                case "determinada":
-                    description = "Ocasionalmente se recusa a descansar, e recupera parte de sua vitalidade como mágica";
-                    break;
-
-                case "distraida":
-                    description = "Ocasionalmente se move na direção oposta, ela nem sabe o que está fazendo...";
-                    break;
-            
-            }
-        }
-
-        public bool Activate()
-        {
-            switch (name)
-            {
-                case "safada":
-                    return new Random().Next(0, 101) <= 10;
-
-                case "esperta":
-                    return new Random().Next(0, 101) <= 10;
-
-                case "preguiçosa":
-                    return new Random().Next(0, 101) <= 10;
-
-                case "determinada":
-                    return new Random().Next(0, 101) <= 10;
-
-                case "distraida":
-                    return new Random().Next(0, 101) <= 25;
-
-                default:
-                    return false;
-            }
-        }
-    }
 
     public Turtle(string name, float weight, float width, Color color)
     {
@@ -97,7 +125,7 @@ class Turtle
         this.weight = weight;
         this.width = width;
         this.color = color;
-        trait = new Trait(traits[random.Next(0, traits.Length)]);
+        turtleTrait = new Trait(traits[random.Next(0, traits.Length)]);
         speed = random.Next(1, 6);
         IMC = this.weight / ((this.width/100) * (this.width/100));
 
@@ -134,8 +162,8 @@ class Turtle
         Console.WriteLine($"Nome: {name}");
         Console.WriteLine($"Peso: {weight}kg");
         Console.WriteLine($"Largura: {width}cm");
-        Console.WriteLine($"Traço: {trait.name.ToUpper()}");
-        Console.WriteLine($"    - {trait.description}");
+        Console.WriteLine($"Traço: {turtleTrait.name.ToUpper()}");
+        Console.WriteLine($"    - {turtleTrait.description}");
         Console.WriteLine($"Cor: {color.Name}");
         Console.WriteLine($"Velocidade: {speed}");
         Console.WriteLine($"IMC: {IMC}");
@@ -148,10 +176,58 @@ class Turtle
 
         if (move)
         {
-            switch (trait.name)
+            switch (turtleTrait.name)
             {
-                case "distracted":
+                case "safada":
+                    xPosition += speed;
+                    tiredness += tirednessPerMove;
+                    //turtleTrait.triggered = true;
+                    break;
 
+                case "esperta":
+                    if (turtleTrait.Activate())
+                    {
+                        xPosition += speed * 2;
+                        turtleTrait.triggered = true;
+                    }
+                    else
+                    {
+                        xPosition += speed;
+                    }
+
+                    tiredness += tirednessPerMove;
+                    break;
+                    
+                case "preguiçosa":
+                    if (turtleTrait.Activate())
+                    {
+                        xPosition += speed;
+                        tiredness = 100;
+                        turtleTrait.triggered = true;
+                    }
+                    else
+                    {
+                        xPosition += speed;
+                        tiredness += tirednessPerMove;
+                    }
+                    break;
+
+                case "distracted":
+                    if (turtleTrait.Activate())
+                    {
+                        turtleTrait.triggered = true;
+                        xPosition -= speed * 2;
+                    }
+                    else
+                    {
+                        xPosition += speed;
+                    }
+                    tiredness += tirednessPerMove;
+                    break;
+
+                default:
+                    xPosition += speed;
+                    break;
             }
 
             if (tiredness >= 100)
@@ -171,7 +247,12 @@ class Turtle
     public void Rest()
     {
         tiredness -= 10;
-        if (tiredness <= 0)
+        if (turtleTrait.name == "determinada" && turtleTrait.Activate())
+        {
+            tiredness = 0;
+            turtleTrait.triggered = true;
+        }
+        else if (tiredness <= 0)
         {
             tiredness = 0;
             resting = false;
@@ -244,8 +325,6 @@ class Program
             threads[i].Start();
         }
 
-
-        List<string> log = new List<string>();
         List<Turtle> winners = new List<Turtle>();
 
         while (!raceFinished)
@@ -261,11 +340,6 @@ class Program
                 {
                     winners.Add(turtle);
                 }
-
-                if (turtle.resting)
-                {
-                    log.Add($"{turtle.name} está descansando");
-                }
             }
 
             if (winners.Count != 0)
@@ -275,7 +349,7 @@ class Program
 
             Console.Clear();
             DrawTurtles(turtles, trackLength);
-            //DrawLog(log);
+            DrawLog(turtles);
             Thread.Sleep(200);
         }
 
@@ -323,14 +397,17 @@ class Program
         Console.ReadKey();
     }
 
-    static void DrawLog(List<string> log)
+    static void DrawLog(List<Turtle> turtles)
     {
         Console.WriteLine("");
         Console.WriteLine("Log da corrida:");
         Console.WriteLine("");
-        foreach (string logLine in log)
+        foreach (Turtle turtle in turtles)
         {
-            Console.WriteLine(logLine);
+            if (turtle.turtleTrait.triggered)
+            {
+                Console.WriteLine(turtle.turtleTrait.TriggerMessage(turtle));
+            }
         }
     }
 
