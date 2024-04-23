@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Tartarun
-build_property.ProjectDir = C:\Users\alepb\Desktop\Projetos\C#\tartarun\Tartarun\
+build_property.ProjectDir = C:\Users\Alunock\Desktop\Arquivos Temporários\xanbriel\tartarun\Tartarun\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
