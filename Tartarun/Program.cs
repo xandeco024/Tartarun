@@ -2,9 +2,9 @@
 //jogo de corrida de tartarugas com multithreading
 //Grupo:
 //Gabriel Alexander Pinheiro Bravo
+//Iori de Souza Leite
 //Felipe Vieira Canalle
 //William Luz
-//Victor Luiz
 
 using System.Drawing;
 using System.Threading;
@@ -629,9 +629,9 @@ class Program
         Console.WriteLine("");
         Console.WriteLine("Desenvolvido por: ");
         Console.WriteLine("Gabriel Alexander Pinheiro Bravo");
+        Console.WriteLine("Iori de Souza Leite");
         Console.WriteLine("Felipe Vieira Canalle");
         Console.WriteLine("William Luz");
-        Console.WriteLine("Victor Luiz");
         Console.WriteLine("");
         Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
         Console.WriteLine("");
@@ -868,5 +868,6 @@ class Program
                     break;
             }
         }
+
     }
 }

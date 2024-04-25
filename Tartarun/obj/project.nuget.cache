@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xIToUkt1TIdBpb9KbNeL3/PsdJKSJVLFqYwB0SVc4MlSFH3y4cJuqepOGCRsbX5IFUCur3XsANJMyghIQAo31A==",
+  "dgSpecHash": "KqeuU203BD5lEmcxj1AleRPQJhW9qG5D3DZcgy786HTHN/DfGB0TbUvA3iIzkaFMoppszg29TP53A50F2dRW8A==",
   "success": true,
   "projectFilePath": "C:\\Users\\alepb\\Desktop\\Projetos\\C#\\tartarun\\Tartarun\\Tartarun.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\alepb\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.4\\microsoft.netcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
-    "C:\\Users\\alepb\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.4.nupkg.sha512",
-    "C:\\Users\\alepb\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.4\\microsoft.aspnetcore.app.runtime.win-x64.7.0.4.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
