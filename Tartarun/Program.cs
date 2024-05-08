@@ -10,8 +10,6 @@ using System.Drawing;
 using System.Threading;
 using System.Media;
 
-//select and back sfx import
-
 class Trait
 {
     public string name;
@@ -34,12 +32,6 @@ class Trait
         //resetTriggerThread.Start();
         triggered = false;
         return text;
-    }
-
-    void ResetTrigger()
-    {    
-        Thread.Sleep(1000);
-        this.triggered = false;
     }
 
     public Trait(string name)
@@ -98,6 +90,7 @@ class Trait
                 turtle.xPosition += turtle.speed;
                 turtle.tiredness += turtle.tirednessPerMove;
                 Turtle luckyTurtle = null;
+
                 foreach (Turtle otherTurtle in otherTurtles)
                 {
                     //pega a tartaruga atrás dela
@@ -227,7 +220,7 @@ class Turtle
     public string name;
     private float weight;
     private float width;
-    private Color color;
+    public ConsoleColor color;
     public int speed;
     private float IMC;
     private int chanceToMove;
@@ -241,7 +234,7 @@ class Turtle
     public Trait trait;
     private string[] possibleTraitNames = { "safada", "fofa", "esperta", "preguiçosa", "determinada", "distraida"};
 
-    public Turtle(string name, float weight, float width, Color color)
+    public Turtle(string name, float weight, float width, ConsoleColor color)
     {
         Random random = new Random();
 
@@ -292,7 +285,7 @@ class Turtle
         Console.WriteLine($"Largura: {width}cm");
         Console.WriteLine($"Traço: {trait.name.ToUpper()}");
         Console.WriteLine($"    - {trait.description}");
-        Console.WriteLine($"Cor: {color.Name}");
+        Console.WriteLine($"Cor: {color.ToString()}");
         Console.WriteLine($"Velocidade: {speed}");
         Console.WriteLine($"IMC: {IMC}");
     }
@@ -562,11 +555,13 @@ class Program
         Console.WriteLine("");
         for (int i = 0; i < turtles.Count; i++)
         {
+            Console.ForegroundColor = turtles[i].color;
             Console.Write("|");
             for (int b = 0; b < trackLength; b++)
             {
                 if (b == (int)turtles[i].xPosition)
                 {
+                    //draw turtle first letter with color
                     Console.Write(turtles[i].name[0]);
                 }
                 else
@@ -583,6 +578,7 @@ class Program
                 Console.Write("|");
             }
             DrawStatus(turtles[i]);
+            Console.ResetColor();
         }
         Console.WriteLine("");
         Console.Write("Cansaço: ");
@@ -695,7 +691,38 @@ class Program
 
                 float weight = new Random().Next(0, 551);
                 float width = new Random().Next(0, 251);
-                Color color = Color.FromArgb(new Random().Next(0, 256), new Random().Next(0, 256), new Random().Next(0, 256));
+                int colorIndex = new Random().Next(1, 9);
+                ConsoleColor color;
+                switch (colorIndex)
+                {
+                    case 1:
+                        color = ConsoleColor.Red;
+                        break;
+                    case 2:
+                        color = ConsoleColor.DarkYellow;
+                        break;
+                    case 3:
+                        color = ConsoleColor.Yellow;
+                        break;
+                    case 4:
+                        color = ConsoleColor.Green;
+                        break;
+                    case 5:
+                        color = ConsoleColor.Blue;
+                        break;
+                    case 6:
+                        color = ConsoleColor.DarkMagenta;
+                        break;
+                    case 7:
+                        color = ConsoleColor.Black;
+                        break;
+                    case 8:
+                        color = ConsoleColor.White;
+                        break;
+                    default:
+                        color = ConsoleColor.Black;
+                        break;
+                }
                 Turtle turtle = new Turtle(name, weight, width, color);
                 turtles.Add(turtle);
             }
@@ -735,35 +762,35 @@ class Program
                 {
                     Console.Write("Cor inválida! Digite um índice válido: ");
                 }
-                Color color;
+                ConsoleColor color;
                 switch (colorIndex)
                 {
                     case 1:
-                        color = Color.Red;
+                        color = ConsoleColor.Red;
                         break;
                     case 2:
-                        color = Color.Orange;
+                        color = ConsoleColor.DarkYellow;
                         break;
                     case 3:
-                        color = Color.Yellow;
+                        color = ConsoleColor.Yellow;
                         break;
                     case 4:
-                        color = Color.Green;
+                        color = ConsoleColor.Green;
                         break;
                     case 5:
-                        color = Color.Blue;
+                        color = ConsoleColor.Blue;
                         break;
                     case 6:
-                        color = Color.Purple;
+                        color = ConsoleColor.DarkMagenta;
                         break;
                     case 7:
-                        color = Color.Black;
+                        color = ConsoleColor.Black;
                         break;
                     case 8:
-                        color = Color.White;
+                        color = ConsoleColor.White;
                         break;
                     default:
-                        color = Color.Black;
+                        color = ConsoleColor.Black;
                         break;
                 }
 
