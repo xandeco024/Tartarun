@@ -1,0 +1,15 @@
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\Tartarun.exe
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\Tartarun.deps.json
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\Tartarun.runtimeconfig.json
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\Tartarun.dll
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\Tartarun.pdb
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\Tartarun.csproj.AssemblyReference.cache
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\Tartarun.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\Tartarun.AssemblyInfoInputs.cache
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\Tartarun.AssemblyInfo.cs
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\Tartarun.csproj.CoreCompileInputs.cache
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\Tartarun.dll
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\refint\Tartarun.dll
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\Tartarun.pdb
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\Tartarun.genruntimeconfig.cache
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\obj\Release\net7.0\ref\Tartarun.dll

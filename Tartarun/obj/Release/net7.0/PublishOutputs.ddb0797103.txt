@@ -1,0 +1,5 @@
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\publish\Tartarun.exe
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\publish\Tartarun.dll
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\publish\Tartarun.deps.json
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\publish\Tartarun.runtimeconfig.json
+C:\Users\alepb\Desktop\PROJETOS\C#\tartarun\tartarun\bin\Release\net7.0\publish\Tartarun.pdb
