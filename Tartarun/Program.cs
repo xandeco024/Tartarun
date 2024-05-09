@@ -584,7 +584,10 @@ class Program
         Console.Write("Cansaço: ");
         foreach (Turtle turtle in turtles)
         {
-            Console.Write(turtle.name + " " + (turtle.tiredness) +"% | ");
+            Console.ForegroundColor = turtle.color;
+            Console.Write(turtle.name + " " + (turtle.tiredness) +"%");
+            Console.ResetColor();
+            Console.Write(" | ");
         }
         Console.WriteLine("");
         Console.WriteLine("-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
