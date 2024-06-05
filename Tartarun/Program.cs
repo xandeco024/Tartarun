@@ -593,6 +593,7 @@ class Program
         Console.WriteLine("-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 
     }
+    
     static void PresentTurtles(List<Turtle> turtles)
     {
         foreach (Turtle turtle in turtles)
@@ -638,7 +639,7 @@ class Program
         Console.ReadKey();
     }
 
-    static List<Turtle> CreateTurtles()
+    static List<Turtle> CreateTurtles(int amount)
     {
         List<Turtle> turtles = new List<Turtle>();
 
@@ -676,15 +677,19 @@ class Program
                 };
 
             List<string> turtleUnavaliableNames = new List<string>();
-            
-            Random randomName = new Random();
+            List<int> turtleUnavaliableColorIndexes = new List<int>();
 
-            for (int i = 0; i < 5; i++)
+            Random randomName = new Random();
+            Random randomColor = new Random();
+
+            for (int i = 0; i < amount; i++)
             {
                 string name = "";
+                
                 while (true)
                 {
                     name = turtleNames[randomName.Next(0, turtleNames.Length)];
+
                     if (!turtleUnavaliableNames.Contains(name))
                     {
                         turtleUnavaliableNames.Add(name);
@@ -694,9 +699,22 @@ class Program
 
                 float weight = new Random().Next(0, 551);
                 float width = new Random().Next(0, 251);
-                int colorIndex = new Random().Next(1, 9);
-                ConsoleColor color;
-                switch (colorIndex)
+
+                int colorIndex;
+
+                while (true)
+                {
+                    colorIndex = randomColor.Next(1, 11);
+
+                    if (!turtleUnavaliableColorIndexes.Contains(colorIndex))
+                    {
+                        turtleUnavaliableColorIndexes.Add(colorIndex);
+                        break;
+                    }
+                }
+
+                ConsoleColor color = ConsoleColor.Black;
+                switch(colorIndex)
                 {
                     case 1:
                         color = ConsoleColor.Red;
@@ -714,16 +732,19 @@ class Program
                         color = ConsoleColor.Blue;
                         break;
                     case 6:
-                        color = ConsoleColor.DarkMagenta;
+                        color = ConsoleColor.DarkBlue;
                         break;
                     case 7:
-                        color = ConsoleColor.Black;
+                        color = ConsoleColor.Magenta;
                         break;
                     case 8:
-                        color = ConsoleColor.White;
+                        color = ConsoleColor.DarkMagenta;
                         break;
-                    default:
-                        color = ConsoleColor.Black;
+                    case 9:
+                        color = ConsoleColor.Gray;
+                        break;
+                    case 10:
+                        color = ConsoleColor.White;
                         break;
                 }
                 Turtle turtle = new Turtle(name, weight, width, color);
@@ -732,7 +753,7 @@ class Program
         }
         else
         {
-            for (int i = 1; i < 6; i++)
+            for (int i = 1; i < amount + 1; i++)
             {
                 Console.WriteLine("-=- | Tartarun - Criação de Tartaruags | -=-");
                 Console.WriteLine("");
@@ -758,15 +779,17 @@ class Program
                     Console.Write("Largura inválida! Digite uma largura válida: ");
                 }
                 Console.WriteLine("Escolha uma cor da lista de cores");
-                Console.WriteLine("1. Vermelho | 2. Laranja | 3. Amarelo | 4. Verde | 5. Azul | 6. Roxo | 7. Preto | 8. Branco");
+                //Console.WriteLine("1. Vermelho | 2. Laranja | 3. Amarelo | 4. Verde | 5. Azul | 6. Roxo | 7. Preto | 8. Branco");
+                Console.WriteLine("1. Vermelho | 2. Amarelo Escuro | 3. Amarleo | 4. Verde | 5. Azul ");
+                Console.WriteLine(" 6. Azul Escuro | 7. Magenta | 8. Magenta Escuro | 9. Cinza | 10. Branco" );
                 Console.Write("Indice da cor escolhida: ");
                 int colorIndex;
-                while (!int.TryParse(Console.ReadLine(), out colorIndex) || colorIndex < 1 || colorIndex > 8)
+                while (!int.TryParse(Console.ReadLine(), out colorIndex) || colorIndex < 1 || colorIndex > 10)
                 {
                     Console.Write("Cor inválida! Digite um índice válido: ");
                 }
-                ConsoleColor color;
-                switch (colorIndex)
+                ConsoleColor color = ConsoleColor.Black;
+                switch(colorIndex)
                 {
                     case 1:
                         color = ConsoleColor.Red;
@@ -784,16 +807,19 @@ class Program
                         color = ConsoleColor.Blue;
                         break;
                     case 6:
-                        color = ConsoleColor.DarkMagenta;
+                        color = ConsoleColor.DarkBlue;
                         break;
                     case 7:
-                        color = ConsoleColor.Black;
+                        color = ConsoleColor.Magenta;
                         break;
                     case 8:
-                        color = ConsoleColor.White;
+                        color = ConsoleColor.DarkMagenta;
                         break;
-                    default:
-                        color = ConsoleColor.Black;
+                    case 9:
+                        color = ConsoleColor.Gray;
+                        break;
+                    case 10:
+                        color = ConsoleColor.White;
                         break;
                 }
 
@@ -811,28 +837,25 @@ class Program
         }
         return turtles;
     }
+    
+    class BetSystem
+    {
+        class Bet
+        {
+            public string betterName;
+            public string turtleName;
+            public int amount;
+            public bool won;
+        }
+    }
 
     static void Main()
     {
-        int trackLength = 100;
+        int trackLength = 100;  
         bool running = true;
 
         Console.Clear();
-
-        Console.WriteLine("-=- | Tartarun | -=-");
-
-        //Console.WriteLine(DateTime.Now.Second);
-        Console.WriteLine("");
-        Console.WriteLine("Bem-vindo ao Tartarun!");
-        Console.WriteLine("Para começar, crie as tartarugas que irão competir na corrida!");
-        Console.WriteLine("");
-
-        List<Turtle> turtles = CreateTurtles();
-
-        Console.WriteLine("Tartarugas criadas com sucesso!");
-        Console.WriteLine("");
-        Console.WriteLine("Pressione qualquer tecla para ser direcionado ao menu");
-        Console.ReadKey();
+        List<Turtle> turtles = new List<Turtle>();
 
         while(running)
         {
@@ -841,16 +864,30 @@ class Program
             Console.WriteLine("");
             Console.WriteLine("Escolha uma opção:");
             Console.WriteLine();
-            Console.WriteLine("1. Começar corrida");
+            if (turtles.Count == 0)
+            {
+                Console.WriteLine("1. Iniciar corrida NAO DA");
+            }
+            else
+            {
+                Console.WriteLine("1. Iniciar corrida");
+            }
             Console.WriteLine("2. Apresentar tartarugas");
-            Console.WriteLine("3. Recriar tartarugas");
-            Console.WriteLine("4. Créditos");
-            Console.WriteLine("5. Sair");
+            if (turtles.Count == 0)
+            {
+                Console.WriteLine("3. Criar tartarugas");
+            }
+            else
+            {
+                Console.WriteLine("3. Recriar tartarugas");
+            }
+            Console.WriteLine("4. Apostar");
+            Console.WriteLine("5. Créditos");
+            Console.WriteLine("6. Sair");
             Console.WriteLine("");
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-"); 
-
             int option;
-            while (!int.TryParse(Console.ReadLine(), out option) || option < 1 || option > 5)
+            while (!int.TryParse(Console.ReadLine(), out option) || option < 1 || option > 6)
             {
                 Console.WriteLine("");
                 Console.Write("Opção inválida! Digite um número de 1 a 5: ");
@@ -860,31 +897,63 @@ class Program
             {
                 case 1:
                     Console.Clear();
-                    Console.WriteLine("Digite o multiplicador de velocidade da corrida (1 a 10): ");
-                    int speedMultiplier;
-                    while (!int.TryParse(Console.ReadLine(), out speedMultiplier) || speedMultiplier < 1 || speedMultiplier > 10)
+                    if (turtles.Count == 0)
                     {
-                        Console.Write("Multiplicador inválido! Digite um número de 1 a 10: ");
+                        Console.WriteLine("Como fazer uma corrida sem corredores?");
+                        Console.WriteLine("Crie  as tartarugas antes de iniciar a corrida!");
+                        Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+                        Console.ReadKey();
+                        break;
                     }
-                    Race(turtles, trackLength, speedMultiplier);
+                    else 
+                    {
+                        Console.WriteLine("Digite o multiplicador de velocidade da corrida (1 a 10): ");
+                        int speedMultiplier;
+                        while (!int.TryParse(Console.ReadLine(), out speedMultiplier) || speedMultiplier < 1 || speedMultiplier > 10)
+                        {
+                            Console.Write("Multiplicador inválido! Digite um número de 1 a 10: ");
+                        }
+                        Race(turtles, trackLength, speedMultiplier);
+                    }
                     break;
 
                 case 2:
                     Console.Clear();
-                    PresentTurtles(turtles);
+                    if (turtles.Count == 0)
+                    {
+                        Console.WriteLine("Que tartarugas?");
+                        Console.WriteLine("Crie as tartarugas antes de apresentá-las!");
+                        Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        PresentTurtles(turtles);
+                    }
                     break;
 
                 case 3:
                     Console.Clear();
-                    turtles = CreateTurtles();
+                    Console.WriteLine("Insira a quantidade de tartarugas que deseja criar (min: 1 | max: 10): ");
+                    int turtleAmount;
+                    while (!int.TryParse(Console.ReadLine(), out turtleAmount) || turtleAmount < 1 || turtleAmount > 10)
+                    {
+                        Console.Write("Quantidade inválida! Digite um número de 1 a 10: ");
+                    }
+                    turtles = CreateTurtles(turtleAmount);
                     break;
 
                 case 4:
                     Console.Clear();
-                    Credits();
+                    Console.WriteLine("Apostar");
                     break;
 
                 case 5:
+                    Console.Clear();
+                    Credits();
+                    break;
+
+                case 6:
                     Console.Clear();
                     Console.WriteLine("Obrigado por jogar Tartarun!");
                     Console.WriteLine("Até breve! (espero)");
@@ -898,6 +967,5 @@ class Program
                     break;
             }
         }
-
     }
 }

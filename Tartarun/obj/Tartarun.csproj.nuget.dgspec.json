@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\tartarun\\Tartarun.csproj": {}
+    "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\Tartarun\\Tartarun.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\tartarun\\Tartarun.csproj": {
+    "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\Tartarun\\Tartarun.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\tartarun\\Tartarun.csproj",
+        "projectUniqueName": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\Tartarun\\Tartarun.csproj",
         "projectName": "Tartarun",
-        "projectPath": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\tartarun\\Tartarun.csproj",
+        "projectPath": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\Tartarun\\Tartarun.csproj",
         "packagesPath": "C:\\Users\\alepb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\tartarun\\obj\\",
+        "outputPath": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\Tartarun\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
