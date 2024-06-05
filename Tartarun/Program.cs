@@ -8,6 +8,7 @@
 
 using System.Drawing;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Media;
 
 class Trait
@@ -290,7 +291,7 @@ class Turtle
         Console.WriteLine($"IMC: {IMC}");
     }
 
-    public void Move(float trackLength, List<Turtle> otherTurtles)
+    void Move(float trackLength, List<Turtle> otherTurtles)
     {
         bool move = new Random().Next(0, 101) <= chanceToMove;
 
@@ -320,7 +321,7 @@ class Turtle
         }
     }
 
-    public void Rest()
+    void Rest()
     {
         tiredness -= 10;
         restingTime += 1;
@@ -338,6 +339,18 @@ class Turtle
         }
     }
 
+    public void Update(float trackLength, List<Turtle> otherTurtles)
+    {
+        if (resting)
+        {
+            Rest();
+        }
+        else
+        {
+            Move(trackLength, otherTurtles);
+        }
+    }
+
     public void Reset()
     {
         xPosition = 0;
@@ -350,118 +363,6 @@ class Turtle
 
 class Program
 {
-    static void Race(List<Turtle> turtles, int trackLength, int speedMultiplier)
-    {
-        // countdown to start
-        bool raceFinished = false;
-
-        foreach (Turtle turtle in turtles)
-        {
-            turtle.Reset();
-        }
-
-        Console.WriteLine("1. Rodas anexadas!");
-        Thread.Sleep(1000);
-
-        Thread[] threads = new Thread[turtles.Count];
-        Console.WriteLine("2. Threads criadas!");
-        Thread.Sleep(1000);
-
-        Console.WriteLine("3. Corrida iniciada!");
-        Thread.Sleep(1000);
-
-        for (int i = 0; i < turtles.Count; i++)
-        {
-            int localI = i;
-            threads[i] = new Thread(() =>
-            {
-                Turtle turtle = turtles[localI];
-                List<Turtle> otherTurtles = new List<Turtle>();
-
-                foreach (Turtle otherTurtle in turtles)
-                {
-                    if (otherTurtle != turtle)
-                    {
-                        otherTurtles.Add(otherTurtle);
-                    }
-                }
-
-                while (!turtle.finished)
-                {
-                    if (turtle.resting)
-                    {
-                        turtle.Rest();
-                    }
-                    else
-                    {
-                        turtle.Move(trackLength, otherTurtles);
-                    }
-
-                    Thread.Sleep(2000/speedMultiplier);
-                }
-            });
-            threads[i].Start();
-        }
-
-        List<Turtle> winners = new List<Turtle>();
-        List<string> log = new List<string>();
-
-        while (!raceFinished)
-        {
-            float time = DateTime.Now.Second;
-            foreach (Turtle turtle in turtles)
-            {
-                if (turtle.finished && winners.Count == 0)
-                {
-                    winners.Add(turtle);
-                }
-                else if (turtle.finished && turtle.timeFinished == time)
-                {
-                    winners.Add(turtle);
-                }
-            }
-
-            if (winners.Count != 0)
-            {
-                raceFinished = true;
-            }
-
-            Console.Clear();
-            DrawTurtles(turtles, trackLength);
-            AddLog(turtles, log);
-            DrawLog(log);
-            Thread.Sleep(200);
-        }
-
-        Turtle winnerTurtle = null;
-
-        foreach (Turtle turtle in winners)
-        {
-            if (winnerTurtle == null)
-            {
-                winnerTurtle = turtle;
-            }
-            else if (turtle.restingTime < winnerTurtle.restingTime)
-            {
-                winnerTurtle = turtle;
-            }
-        }
-
-        Console.WriteLine("");
-
-        Console.WriteLine($"A tartaruga {winnerTurtle.name} venceu a corrida!");
-        Console.Write("Continuando em 3...");
-        Thread.Sleep(1000);
-        Console.Write(" 2...");
-        Thread.Sleep(1000);
-        Console.Write(" 1...");
-        Thread.Sleep(1000);
-
-        Console.Clear();
-        PresetWinner(winnerTurtle);
-        Console.ReadKey();
-    }
-
     static void PresetWinner(Turtle winnerTurtle)
     {
         Console.WriteLine("-=-=-=-=-=-=-=-=-=-=- | Vencedor | -=-=-=-=-=-=-=-=-=-=-");
@@ -582,12 +483,30 @@ class Program
         }
         Console.WriteLine("");
         Console.Write("Cansaço: ");
-        foreach (Turtle turtle in turtles)
+        bool secondLine = false;
+        for (int i = 0; i < turtles.Count; i++)
         {
-            Console.ForegroundColor = turtle.color;
-            Console.Write(turtle.name + " " + (turtle.tiredness) +"%");
+            Console.ForegroundColor = turtles[i].color;
+            Console.Write(turtles[i].name + " " + (turtles[i].tiredness) +"%");
             Console.ResetColor();
             Console.Write(" | ");
+
+            if(i >= 5) 
+            {
+                Console.WriteLine("");
+                secondLine = true;
+                break;
+            }
+        }
+        if (secondLine)
+        {
+            for (int i = 5; i < turtles.Count; i++)
+            {
+                Console.ForegroundColor = turtles[i].color;
+                Console.Write(turtles[i].name + " " + (turtles[i].tiredness) +"%");
+                Console.ResetColor();
+                Console.Write(" | ");
+            }
         }
         Console.WriteLine("");
         Console.WriteLine("-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
@@ -837,15 +756,145 @@ class Program
         }
         return turtles;
     }
-    
-    class BetSystem
+
+    class BetManager
     {
+        List<Bet> bets = new List<Bet>();
+        public int BetAmount
+        {
+            get
+            {
+                return bets.Count;
+            }
+        }
+
         class Bet
         {
             public string betterName;
             public string turtleName;
             public int amount;
             public bool won;
+
+            public Bet(string betterName, string turtleName, int amount)
+            {
+                this.betterName = betterName;
+                this.turtleName = turtleName;
+                this.amount = amount;
+            }
+        }
+
+        public void PlaceBet(List<Turtle> turtles)
+        {
+            Console.WriteLine("Digite seu nome: ");
+            string betterName = Console.ReadLine();
+            while (betterName == "")
+            {
+                Console.Write("Você não é anônimo! Digite um nome: ");
+                betterName = Console.ReadLine();
+            }
+            Console.WriteLine("Digite o numero da tartaruga que deseja apostar: ");
+            for (int i = 0; i < turtles.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {turtles[i].name}");
+            }
+
+            int turtleIndex;
+            while (!int.TryParse(Console.ReadLine(), out turtleIndex) || turtleIndex < 1 || turtleIndex > turtles.Count)
+            {
+                Console.Write("Tartaruga inválida! Digite um número válido: ");
+            }
+
+            Console.WriteLine("Digite o valor da aposta: ");
+            int amount;
+            while (!int.TryParse(Console.ReadLine(), out amount) || amount < 1)
+            {
+                Console.Write("Valor inválido! Digite um valor válido: ");
+            }
+
+            Bet bet = new Bet(betterName, turtles[turtleIndex-1].name, amount);
+            bets.Add(bet);
+        }
+
+        public void PresentBets(List<Turtle> turtles)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=- | Apostas | -=-=-=-=-=-=-=-=-=-=-");
+            //show the turtle, how many bets it has and the total amount of money
+            foreach (Turtle turtle in turtles)
+            {
+                int totalAmount = 0;
+                int totalBets = 0;
+                foreach (Bet bet in bets)
+                {
+                    if (bet.turtleName == turtle.name)
+                    {
+                        totalAmount += bet.amount;
+                        totalBets++;
+                    }
+                }
+                if (totalBets > 0)
+                {
+                    Console.WriteLine($"Tartaruga: {turtle.name} | Apostas: {totalBets} | Valor total: {totalAmount}");
+                }
+            }
+        }
+
+        public void Reset()
+        {
+            bets.Clear();
+        }
+
+        public void ResumeBets(Turtle winnerTurtle)
+        {
+            foreach (Bet bet in bets)
+            {
+                if (bet.turtleName == winnerTurtle.name)
+                {
+                    bet.won = true;
+                }
+            }
+
+            int totalBets = 0;
+            int totalAmount = 0;
+
+            foreach (Bet bet in bets)
+            {
+                if (bet.won)
+                {
+                    totalAmount += bet.amount;
+                    totalBets++;
+                }
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=- | Resultado das Apostas | -=-=-=-=-=-=-=-=-=-=-");
+            Console.WriteLine("");
+            Console.WriteLine("Tartaruga vencedora: " + winnerTurtle.name + "!" + " | " + " Total de apostas: " + totalBets + " | " + " Valor total: " + totalAmount);
+            Console.WriteLine("");
+            
+            foreach (Bet bet in bets)
+            {
+                if (bet.won)
+                {
+                    Console.Write(bet.betterName);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(" ganhou " + totalAmount/totalBets + " ");
+                    Console.ResetColor();
+                    Console.WriteLine("apostando na tartaruga " + bet.turtleName + ", parabéns!");
+                }
+                else
+                {
+                    Console.Write(bet.betterName);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(" perdeu ");
+                    Console.ResetColor();
+                    Console.WriteLine("apostando na tartaruga " + bet.turtleName + ", tente novamente!");
+                }
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+            Console.ReadKey();
         }
     }
 
@@ -856,6 +905,8 @@ class Program
 
         Console.Clear();
         List<Turtle> turtles = new List<Turtle>();
+        Turtle winnerTurtle = null;
+        BetManager betSystem = new BetManager();
 
         while(running)
         {
@@ -866,7 +917,7 @@ class Program
             Console.WriteLine();
             if (turtles.Count == 0)
             {
-                Console.WriteLine("1. Iniciar corrida NAO DA");
+                Console.WriteLine("1. Iniciar corrida");
             }
             else
             {
@@ -881,7 +932,7 @@ class Program
             {
                 Console.WriteLine("3. Recriar tartarugas");
             }
-            Console.WriteLine("4. Apostar");
+            Console.WriteLine("4. Apostas");
             Console.WriteLine("5. Créditos");
             Console.WriteLine("6. Sair");
             Console.WriteLine("");
@@ -913,7 +964,77 @@ class Program
                         {
                             Console.Write("Multiplicador inválido! Digite um número de 1 a 10: ");
                         }
-                        Race(turtles, trackLength, speedMultiplier);
+
+                        var limit = new ParallelOptions()
+                        {
+                            MaxDegreeOfParallelism = turtles.Count
+                        };
+
+                        bool raceFinished = false;
+
+                        foreach (Turtle turtle in turtles)
+                        {
+                            turtle.Reset();
+                        }
+
+                        Console.WriteLine("1. Rodas anexadas!");
+                        Thread.Sleep(1000);
+
+                        Console.WriteLine("2. Threads criadas!");
+                        Thread.Sleep(1000);
+
+                        Console.WriteLine("3. Corrida iniciada!");
+                        Thread.Sleep(1000);
+                        
+                        List<string> log = new List<string>();
+
+                        while (!raceFinished)
+                        {
+                            Parallel.ForEach(turtles, limit, turtle =>
+                            {
+                                List<Turtle> otherTurtles = new List<Turtle>();
+
+                                foreach (Turtle otherTurtle in turtles)
+                                {
+                                    if (otherTurtle != turtle)
+                                    {
+                                        otherTurtles.Add(otherTurtle);
+                                    }
+                                }
+
+                                turtle.Update(trackLength, otherTurtles);
+                            });
+
+                            foreach (Turtle turtle in turtles)
+                            {
+                                if (turtle.finished)
+                                {
+                                    winnerTurtle = turtle;
+                                    raceFinished = true;
+                                    break;
+                                }
+                            }
+                            Console.Clear();
+                            DrawTurtles(turtles, trackLength);
+                            AddLog(turtles, log);
+                            DrawLog(log);
+                            betSystem.PresentBets(turtles);
+                            Thread.Sleep(2000/speedMultiplier);
+                        }
+
+                        Console.WriteLine("");
+
+                        Console.WriteLine($"A tartaruga {winnerTurtle.name} venceu a corrida!");
+                        Console.Write("Continuando em 3...");
+                        Thread.Sleep(1000);
+                        Console.Write(" 2...");
+                        Thread.Sleep(1000);
+                        Console.Write(" 1...");
+                        Thread.Sleep(1000);
+
+                        Console.Clear();
+                        PresetWinner(winnerTurtle);
+                        betSystem.ResumeBets(winnerTurtle);
                     }
                     break;
 
@@ -945,7 +1066,68 @@ class Program
 
                 case 4:
                     Console.Clear();
-                    Console.WriteLine("Apostar");
+                    Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=- | Apostas | -=-=-=-=-=-=-=-=-=-=-");
+                    Console.WriteLine("");
+                    Console.WriteLine("1. Fazer uma aposta");
+                    Console.WriteLine("2. Apresentar apostas");
+                    Console.WriteLine("3. Limpar apostas");
+                    Console.WriteLine("4. Voltar ao menu");
+                    Console.WriteLine("");
+                    Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-");
+                    int betOption;
+                    while (!int.TryParse(Console.ReadLine(), out betOption) || betOption < 1 || betOption > 4)
+                    {
+                        Console.WriteLine("");
+                        Console.Write("Opção inválida! Digite um número de 1 a 4: ");
+                    }
+                    switch (betOption)
+                    {
+                        case 1:
+                            Console.Clear();
+                            if (turtles.Count == 0)
+                            {
+                                Console.WriteLine("Como apostar em tartaugas que não existem?");
+                                Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                betSystem.PlaceBet(turtles);
+                            }
+                            break;
+
+                        case 2:
+                            Console.Clear();
+                            if (turtles.Count == 0)
+                            {
+                                Console.WriteLine("Não há nem tartarugas, imagine apostas!");
+                                Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+                            }
+                            else if (betSystem.BetAmount == 0)
+                            {
+                                Console.WriteLine("Não há apostas!");
+                                Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+                                
+                            }
+                            else
+                            {
+                                betSystem.PresentBets(turtles);
+                            }
+                            Console.ReadKey();
+                            break;
+
+                        case 3:
+                            Console.Clear();
+                            betSystem.Reset();
+                            Console.WriteLine("Apostas limpas com sucesso!");
+                            Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+                            Console.ReadKey();
+                            break;
+
+                        case 4:
+                            Console.Clear();
+                            break;
+                    }
                     break;
 
                 case 5:

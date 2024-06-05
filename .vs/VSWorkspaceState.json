@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Tartarun",
-    "\\Tartarun\\bin",
-    "\\Tartarun\\obj"
+    "\\Tartarun"
   ],
   "SelectedNode": "\\Tartarun\\Tartarun.csproj",
   "PreviewInSolutionExplorer": false
