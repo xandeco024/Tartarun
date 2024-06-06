@@ -48,18 +48,18 @@
             label2 = new Label();
             label1 = new Label();
             turtlePanel = new Panel();
+            turtleCreationPanel = new Panel();
+            textBox1 = new TextBox();
+            label3 = new Label();
             turtleCreationTurtle = new Label();
             turtleListPanel = new Panel();
             turtleListBox = new ListBox();
-            turtleCreationPanel = new Panel();
-            label3 = new Label();
-            textBox1 = new TextBox();
             mainMenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             creditsPanel.SuspendLayout();
             turtlePanel.SuspendLayout();
-            turtleListPanel.SuspendLayout();
             turtleCreationPanel.SuspendLayout();
+            turtleListPanel.SuspendLayout();
             SuspendLayout();
             // 
             // clock
@@ -79,7 +79,7 @@
             mainMenuPanel.Controls.Add(titleLbl);
             mainMenuPanel.Controls.Add(startBtn);
             mainMenuPanel.Dock = DockStyle.Fill;
-            mainMenuPanel.Font = new Font("Upheaval TT (BRK)", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
+            mainMenuPanel.Font = new Font("Microsoft Sans Serif", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
             mainMenuPanel.Location = new Point(0, 0);
             mainMenuPanel.Margin = new Padding(3, 2, 3, 2);
             mainMenuPanel.Name = "mainMenuPanel";
@@ -89,7 +89,7 @@
             // quitBtn
             // 
             quitBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            quitBtn.Font = new Font("Upheaval TT (BRK)", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            quitBtn.Font = new Font("Microsoft Sans Serif", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             quitBtn.Location = new Point(135, 574);
             quitBtn.Margin = new Padding(3, 2, 3, 2);
             quitBtn.Name = "quitBtn";
@@ -102,7 +102,7 @@
             // creditsBtn
             // 
             creditsBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            creditsBtn.Font = new Font("Upheaval TT (BRK)", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            creditsBtn.Font = new Font("Microsoft Sans Serif", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             creditsBtn.Location = new Point(135, 493);
             creditsBtn.Margin = new Padding(3, 2, 3, 2);
             creditsBtn.Name = "creditsBtn";
@@ -115,7 +115,7 @@
             // turtlesBtn
             // 
             turtlesBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            turtlesBtn.Font = new Font("Upheaval TT (BRK)", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            turtlesBtn.Font = new Font("Microsoft Sans Serif", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             turtlesBtn.Location = new Point(135, 412);
             turtlesBtn.Margin = new Padding(3, 2, 3, 2);
             turtlesBtn.Name = "turtlesBtn";
@@ -127,7 +127,7 @@
             // betBtn
             // 
             betBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            betBtn.Font = new Font("Upheaval TT (BRK)", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            betBtn.Font = new Font("Microsoft Sans Serif", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             betBtn.Location = new Point(135, 331);
             betBtn.Margin = new Padding(3, 2, 3, 2);
             betBtn.Name = "betBtn";
@@ -153,27 +153,27 @@
             // subtitleLbl
             // 
             subtitleLbl.AutoSize = true;
-            subtitleLbl.Font = new Font("Upheaval TT (BRK)", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            subtitleLbl.Font = new Font("Microsoft Sans Serif", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             subtitleLbl.Location = new Point(100, 132);
             subtitleLbl.Name = "subtitleLbl";
-            subtitleLbl.Size = new Size(399, 22);
+            subtitleLbl.Size = new Size(337, 29);
             subtitleLbl.TabIndex = 10;
             subtitleLbl.Text = "a corrida mais rápida de todas";
             // 
             // titleLbl
             // 
             titleLbl.AutoSize = true;
-            titleLbl.Font = new Font("Upheaval TT (BRK)", 63.7499924F, FontStyle.Regular, GraphicsUnit.Point);
+            titleLbl.Font = new Font("Microsoft Sans Serif", 63.7499924F, FontStyle.Regular, GraphicsUnit.Point);
             titleLbl.Location = new Point(84, 55);
             titleLbl.Name = "titleLbl";
-            titleLbl.Size = new Size(433, 77);
+            titleLbl.Size = new Size(332, 96);
             titleLbl.TabIndex = 11;
             titleLbl.Text = "tartarun";
             // 
             // startBtn
             // 
             startBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            startBtn.Font = new Font("Upheaval TT (BRK)", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            startBtn.Font = new Font("Microsoft Sans Serif", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             startBtn.Location = new Point(135, 250);
             startBtn.Margin = new Padding(3, 2, 3, 2);
             startBtn.Name = "startBtn";
@@ -200,46 +200,46 @@
             // creditName3Lbl
             // 
             creditName3Lbl.AutoSize = true;
-            creditName3Lbl.Font = new Font("Upheaval TT (BRK)", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
+            creditName3Lbl.Font = new Font("Microsoft Sans Serif", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
             creditName3Lbl.Location = new Point(84, 303);
             creditName3Lbl.Name = "creditName3Lbl";
-            creditName3Lbl.Size = new Size(206, 26);
+            creditName3Lbl.Size = new Size(165, 33);
             creditName3Lbl.TabIndex = 18;
             creditName3Lbl.Text = "William luz ";
             // 
             // creditName0Lbl
             // 
             creditName0Lbl.AutoSize = true;
-            creditName0Lbl.Font = new Font("Upheaval TT (BRK)", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
+            creditName0Lbl.Font = new Font("Microsoft Sans Serif", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
             creditName0Lbl.Location = new Point(84, 182);
             creditName0Lbl.Name = "creditName0Lbl";
-            creditName0Lbl.Size = new Size(352, 26);
+            creditName0Lbl.Size = new Size(355, 33);
             creditName0Lbl.TabIndex = 17;
             creditName0Lbl.Text = "FELIPE VIEIRA CANALLE";
             // 
             // creditName2Lbl
             // 
             creditName2Lbl.AutoSize = true;
-            creditName2Lbl.Font = new Font("Upheaval TT (BRK)", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
+            creditName2Lbl.Font = new Font("Microsoft Sans Serif", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
             creditName2Lbl.Location = new Point(84, 264);
             creditName2Lbl.Name = "creditName2Lbl";
-            creditName2Lbl.Size = new Size(266, 26);
+            creditName2Lbl.Size = new Size(271, 33);
             creditName2Lbl.TabIndex = 16;
             creditName2Lbl.Text = "IORI SOUZA LEITE";
             // 
             // creditName1Lbl
             // 
             creditName1Lbl.AutoSize = true;
-            creditName1Lbl.Font = new Font("Upheaval TT (BRK)", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
+            creditName1Lbl.Font = new Font("Microsoft Sans Serif", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
             creditName1Lbl.Location = new Point(84, 222);
             creditName1Lbl.Name = "creditName1Lbl";
-            creditName1Lbl.Size = new Size(532, 26);
+            creditName1Lbl.Size = new Size(579, 33);
             creditName1Lbl.TabIndex = 15;
             creditName1Lbl.Text = "GABRIEL ALEXANDER PINHEIRO BRAVO";
             // 
             // creditsBackBtn
             // 
-            creditsBackBtn.Font = new Font("Upheaval TT (BRK)", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
+            creditsBackBtn.Font = new Font("Microsoft Sans Serif", 21.7499981F, FontStyle.Regular, GraphicsUnit.Point);
             creditsBackBtn.Location = new Point(84, 562);
             creditsBackBtn.Name = "creditsBackBtn";
             creditsBackBtn.Size = new Size(182, 62);
@@ -251,20 +251,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Upheaval TT (BRK)", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(416, 86);
             label2.Name = "label2";
-            label2.Size = new Size(399, 22);
+            label2.Size = new Size(337, 29);
             label2.TabIndex = 13;
             label2.Text = "a corrida mais rápida de todas";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Upheaval TT (BRK)", 63.7499924F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 63.7499924F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(397, 9);
             label1.Name = "label1";
-            label1.Size = new Size(433, 77);
+            label1.Size = new Size(332, 96);
             label1.TabIndex = 12;
             label1.Text = "tartarun";
             // 
@@ -278,13 +278,41 @@
             turtlePanel.Size = new Size(1264, 681);
             turtlePanel.TabIndex = 17;
             // 
+            // turtleCreationPanel
+            // 
+            turtleCreationPanel.Controls.Add(textBox1);
+            turtleCreationPanel.Controls.Add(label3);
+            turtleCreationPanel.Controls.Add(turtleCreationTurtle);
+            turtleCreationPanel.Dock = DockStyle.Fill;
+            turtleCreationPanel.Location = new Point(216, 0);
+            turtleCreationPanel.Name = "turtleCreationPanel";
+            turtleCreationPanel.Size = new Size(1048, 681);
+            turtleCreationPanel.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(100, 132);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(241, 21);
+            textBox1.TabIndex = 2;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(100, 101);
+            label3.Name = "label3";
+            label3.Size = new Size(79, 29);
+            label3.TabIndex = 1;
+            label3.Text = "Nome";
+            // 
             // turtleCreationTurtle
             // 
             turtleCreationTurtle.AutoSize = true;
-            turtleCreationTurtle.Font = new Font("Upheaval TT (BRK)", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            turtleCreationTurtle.Font = new Font("Microsoft Sans Serif", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             turtleCreationTurtle.Location = new Point(98, 44);
             turtleCreationTurtle.Name = "turtleCreationTurtle";
-            turtleCreationTurtle.Size = new Size(243, 22);
+            turtleCreationTurtle.Size = new Size(214, 29);
             turtleCreationTurtle.TabIndex = 0;
             turtleCreationTurtle.Text = "tartaruga numero 1";
             // 
@@ -301,49 +329,21 @@
             // 
             turtleListBox.Dock = DockStyle.Fill;
             turtleListBox.FormattingEnabled = true;
-            turtleListBox.ItemHeight = 11;
+            turtleListBox.ItemHeight = 15;
             turtleListBox.Location = new Point(0, 0);
             turtleListBox.Name = "turtleListBox";
             turtleListBox.Size = new Size(216, 681);
             turtleListBox.TabIndex = 0;
             // 
-            // turtleCreationPanel
-            // 
-            turtleCreationPanel.Controls.Add(textBox1);
-            turtleCreationPanel.Controls.Add(label3);
-            turtleCreationPanel.Controls.Add(turtleCreationTurtle);
-            turtleCreationPanel.Dock = DockStyle.Fill;
-            turtleCreationPanel.Location = new Point(216, 0);
-            turtleCreationPanel.Name = "turtleCreationPanel";
-            turtleCreationPanel.Size = new Size(1048, 681);
-            turtleCreationPanel.TabIndex = 2;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Upheaval TT (BRK)", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(100, 101);
-            label3.Name = "label3";
-            label3.Size = new Size(69, 22);
-            label3.TabIndex = 1;
-            label3.Text = "Nome";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(100, 132);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(241, 19);
-            textBox1.TabIndex = 2;
-            // 
             // Main
             // 
-            AutoScaleDimensions = new SizeF(7F, 11F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1264, 681);
-            Controls.Add(turtlePanel);
             Controls.Add(mainMenuPanel);
+            Controls.Add(turtlePanel);
             Controls.Add(creditsPanel);
-            Font = new Font("Upheaval TT (BRK)", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Microsoft Sans Serif", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Main";
             Text = "Form1";
@@ -353,9 +353,9 @@
             creditsPanel.ResumeLayout(false);
             creditsPanel.PerformLayout();
             turtlePanel.ResumeLayout(false);
-            turtleListPanel.ResumeLayout(false);
             turtleCreationPanel.ResumeLayout(false);
             turtleCreationPanel.PerformLayout();
+            turtleListPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 

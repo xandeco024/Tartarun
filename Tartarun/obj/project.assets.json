@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alepb\\Desktop\\Projetos\\C#\\tartarun\\Tartarun\\Tartarun.csproj",
+      "projectUniqueName": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\Tartarun\\Tartarun.csproj",
       "projectName": "Tartarun",
-      "projectPath": "C:\\Users\\alepb\\Desktop\\Projetos\\C#\\tartarun\\Tartarun\\Tartarun.csproj",
+      "projectPath": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\Tartarun\\Tartarun.csproj",
       "packagesPath": "C:\\Users\\alepb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alepb\\Desktop\\Projetos\\C#\\tartarun\\Tartarun\\obj\\",
+      "outputPath": "C:\\Users\\alepb\\Desktop\\PROJETOS\\C#\\tartarun\\Tartarun\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,7 +33,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -67,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
